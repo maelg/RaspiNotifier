@@ -53,7 +53,7 @@ def getNbrMessagesUnread():
     http = credentials.authorize(httplib2.Http())
     service = discovery.build('gmail', 'v1', http=http)
 
-    results = service.users().labels().get(userId='me', id="CATEGORY_PERSONAL").execute()
+    results = service.users().labels().get(userId='me', id=config.get("Gmail", "label")).execute()
 
     return results['messagesUnread']
 

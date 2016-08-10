@@ -1,6 +1,7 @@
 [Gmail]
 userId =
 gpioPin = 16
+label = IMPORTANT
 
 [Facebook]
 gpioPin = 11
