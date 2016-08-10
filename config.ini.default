@@ -1,0 +1,6 @@
+[Gmail]
+userId =
+gpioPin = 16
+
+[Facebook]
+gpioPin = 11
