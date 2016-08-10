@@ -1,3 +1,3 @@
-from checker import gmail
+from checker.gmail import *
 
-gmail.googleAuth(True)
+gmail.googleAuth()

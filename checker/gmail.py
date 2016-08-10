@@ -1,12 +1,18 @@
 import RPi.GPIO as GPIO
-
+from config import *
 import httplib2
-import os
+import os, sys
 
 from apiclient import discovery
 import oauth2client
 from oauth2client import client
 from oauth2client import tools
+
+try:
+    import argparse
+    flags = argparse.ArgumentParser(parents=[tools.argparser]).parse_args()
+except ImportError:
+    flags = None
 
 SCOPES = 'https://www.googleapis.com/auth/gmail.readonly'
 CLIENT_SECRET_FILE = 'client_secret.json'
@@ -40,7 +46,7 @@ def googleAuth():
     print("Authorize")
 
 def getNbrMessagesUnread():
-    credentials = get_credentials(false)
+    credentials = get_credentials(False)
     if not credentials:
         return -1
 
@@ -52,7 +58,7 @@ def getNbrMessagesUnread():
     return results['messagesUnread']
 
 def checkGmail():
-    nbr_mails = int(open(os.path.dirname(__file__)+"nbr_gmail.txt", "r").read())
+    nbr_mails = int(open(os.path.dirname(__file__)+"/nbr_gmail.txt", "r").read())
     new_nbr_mails = int(getNbrMessagesUnread())
 
     if new_nbr_mails == -1:
@@ -68,4 +74,4 @@ def checkGmail():
     if new_nbr_mails < nbr_mails:
         GPIO.output(GPIO_PIN, False)
 
-    open(os.path.dirname(__file__)+"nbr_gmail.txt", "w").write(str(new_nbr_mails))
+    open(os.path.dirname(__file__)+"/nbr_gmail.txt", "w").write(str(new_nbr_mails))
