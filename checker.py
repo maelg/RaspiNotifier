@@ -3,8 +3,8 @@ from config import *
 from checker import facebook, gmail
 
 if( int(time.strftime('%H')) >= 8 and int(time.strftime('%H')) <= 21 ):
-    checkFacebook()
-    checkGmail()
+    #facebook.checkFacebook()
+    gmail.checkGmail()
 
 elif( int(time.strftime('%H')) == 22 ) :
     state_gpio = [ True, GPIO.input(11), GPIO.input(16) ] #Night mode state, gpio11, gpio16

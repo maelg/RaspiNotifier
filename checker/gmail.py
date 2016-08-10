@@ -52,7 +52,7 @@ def getNbrMessagesUnread():
     return results['messagesUnread']
 
 def checkGmail():
-    nbr_mails = int(open("/home/pi/RaspiNotifier/nbr/nbr_gmail.txt", "r").read())
+    nbr_mails = int(open(os.path.dirname(__file__)+"nbr_gmail.txt", "r").read())
     new_nbr_mails = int(getNbrMessagesUnread())
 
     if new_nbr_mails == -1:
@@ -68,4 +68,4 @@ def checkGmail():
     if new_nbr_mails < nbr_mails:
         GPIO.output(GPIO_PIN, False)
 
-    open("/home/pi/RaspiNotifier/nbr/nbr_gmail.txt", "w").write(str(new_nbr_mails))
+    open(os.path.dirname(__file__)+"nbr_gmail.txt", "w").write(str(new_nbr_mails))

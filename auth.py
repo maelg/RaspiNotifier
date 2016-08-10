@@ -1,3 +1,3 @@
 from checker import gmail
 
-googleAuth(True)
+gmail.googleAuth(True)
