@@ -1,4 +1,4 @@
-import RPi.GPIO as GPIO, feedparser, time, subprocess
+import RPi.GPIO as GPIO, subprocess
 
 #if( int(time.strftime('%H')) >= 8 and int(time.strftime('%H')) <= 21 ):
 
