@@ -1,4 +1,4 @@
-import RPi.GPIO as GPIO, feedparser, time
+import RPi.GPIO as GPIO
 
 import httplib2
 import os
